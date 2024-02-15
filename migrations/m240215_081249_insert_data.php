@@ -18,35 +18,35 @@ class m240215_081249_insert_data extends Migration
             ['72c472'],
         ]);
 
-        $this->batchInsert('product',['name', 'label', 'priority'], [
-            ['oranges', 'Апельсины', 1],
-            ['bananas', 'Бананы', 1],
-            ['potato', 'Картошка', 1],
-            ['kefir', 'Кефир', 1],
-            ['coffee', 'Кофе', 1],
-            ['onion', 'Лук', 1],
-            ['oil', 'Масло', 1],
-            ['milk', 'Молоко', 1],
-            ['flour', 'Мука', 1],
-            ['cucumbers', 'Огурцы', 1],
-            ['peppers', 'Перцы', 1],
-            ['tomatoes', 'Помидоры', 1],
-            ['rice', 'Рис', 1],
-            ['sugar', 'Сахар', 1],
-            ['cheese', 'Сыр', 1],
-            ['cottage cheese', 'Творог', 1],
-            ['tea', 'Чай', 1],
-            ['apples', 'Яблоки', 1],
+        $this->batchInsert('product',['name', 'label'], [
+            ['oranges', 'Апельсины'],
+            ['bananas', 'Бананы'],
+            ['potato', 'Картошка'],
+            ['kefir', 'Кефир'],
+            ['coffee', 'Кофе'],
+            ['onion', 'Лук'],
+            ['oil', 'Масло'],
+            ['milk', 'Молоко'],
+            ['flour', 'Мука'],
+            ['cucumbers', 'Огурцы'],
+            ['peppers', 'Перцы'],
+            ['tomatoes', 'Помидоры'],
+            ['rice', 'Рис'],
+            ['sugar', 'Сахар'],
+            ['cheese', 'Сыр'],
+            ['cottage cheese', 'Творог'],
+            ['tea', 'Чай'],
+            ['apples', 'Яблоки'],
         ]);
 
-        $this->batchInsert('tag',['name', 'label', 'color_id'], [
-            ['discount', 'Скидка', 1],
-            ['cashback_10', 'Кэшбэк 10%', 1],
-            ['milk', 'Молоко', 2],
-            ['grocery', 'Бакалея', 2],
-            ['vegetables_fruits', 'Овощи фрукты', 2],
-            ['eco', 'Эко', 3],
-            ['children', 'Для детей', 3],
+        $this->batchInsert('tag',['name', 'label', 'color_id', 'priority'], [
+            ['discount', 'Скидка', 1, 1],
+            ['cashback_10', 'Кэшбэк 10%', 1, 2],
+            ['milk', 'Молоко', 2, 3],
+            ['grocery', 'Бакалея', 2, 4],
+            ['vegetables_fruits', 'Овощи фрукты', 2, 5],
+            ['eco', 'Эко', 3, 6],
+            ['children', 'Для детей', 3, 7],
         ]);
 
         $this->batchInsert('product_tags',['product_id', 'tag_id'], [
