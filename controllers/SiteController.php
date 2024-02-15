@@ -77,10 +77,10 @@ class SiteController extends Controller
         ]);
 
         $products = $query
-            ->select(['product.*', 'min(tag.priority) as min_priority_tag', 'sum(tag.priority) as sum_priority_tag'])
+            ->select(['product.*', 'max(tag.priority) as max_priority_tag', 'sum(tag.priority) as sum_priority_tag'])
             ->joinWith(['tags.tag'])
             ->groupBy(['product.id'])
-            ->orderBy(['min_priority_tag' => SORT_ASC, 'sum_priority_tag' => SORT_DESC])
+            ->orderBy(['max_priority_tag' => SORT_DESC, 'sum_priority_tag' => SORT_DESC])
             ->offset($pagination->offset)
             ->limit($pagination->limit)
             ->all();

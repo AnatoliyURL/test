@@ -40,13 +40,13 @@ class m240215_081249_insert_data extends Migration
         ]);
 
         $this->batchInsert('tag',['name', 'label', 'color_id', 'priority'], [
-            ['discount', 'Скидка', 1, 1],
-            ['cashback_10', 'Кэшбэк 10%', 1, 2],
-            ['milk', 'Молоко', 2, 3],
+            ['discount', 'Скидка', 1, 7],
+            ['cashback_10', 'Кэшбэк 10%', 1, 6],
+            ['milk', 'Молоко', 2, 5],
             ['grocery', 'Бакалея', 2, 4],
-            ['vegetables_fruits', 'Овощи фрукты', 2, 5],
-            ['eco', 'Эко', 3, 6],
-            ['children', 'Для детей', 3, 7],
+            ['vegetables_fruits', 'Овощи фрукты', 2, 3],
+            ['eco', 'Эко', 3, 2],
+            ['children', 'Для детей', 3, 1],
         ]);
 
         $this->batchInsert('product_tags',['product_id', 'tag_id'], [
