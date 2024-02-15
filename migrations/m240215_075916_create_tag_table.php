@@ -16,7 +16,7 @@ class m240215_075916_create_tag_table extends Migration
             'id' => $this->primaryKey(),
             'name' => $this->string()->notNull()->unique()->comment('Наименование тега для системы'),
             'label' => $this->string()->notNull()->comment('Наименование тега для отображения пользователям'),
-            'priority' => $this->integer()->defaultValue(1)->comment('Приоритет продукта'),
+            'priority' => $this->integer()->defaultValue(1)->comment('Приоритет тега'),
             'color_id' => $this->integer()->comment('Цвет тега для отображения'),
         ]);
 

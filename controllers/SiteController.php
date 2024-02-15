@@ -2,7 +2,10 @@
 
 namespace app\controllers;
 
+use app\models\Product;
+use app\models\ProductSearch;
 use Yii;
+use yii\data\Pagination;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\web\Response;
@@ -61,7 +64,31 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+        //Почему в контроллере? Потому что недостаточно сложный запрос без фильтрации и т.д.
+        //Был бы сложнее, можно было бы создать ProductSearch в котором будет:
+        // - и пагинация, и фильтрация,
+        // - и тот же DataProvider прикрутить если бы выводили с помощью виджетов
+        //А пока так в виде массива, простенькое отображение на коленке
+        $query = Product::find();
+
+        $pagination = new Pagination([
+            'defaultPageSize' => 5,
+            'totalCount' => $query->count(),
+        ]);
+
+        $products = $query
+            ->select(['product.*', 'min(tag.priority) as min_priority_tag', 'sum(tag.priority) as sum_priority_tag'])
+            ->joinWith(['tags.tag'])
+            ->groupBy(['product.id'])
+            ->orderBy(['min_priority_tag' => SORT_ASC, 'sum_priority_tag' => SORT_DESC])
+            ->offset($pagination->offset)
+            ->limit($pagination->limit)
+            ->all();
+
+        return $this->render('index', [
+            'products' => $products,
+            'pagination' => $pagination,
+        ]);
     }
 
     /**
